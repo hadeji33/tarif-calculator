@@ -1,0 +1,25 @@
+.input {
+  font-size: var(--size-l);
+  padding: 18px 16px;
+  color: var(--color-black);
+  border: 1px solid var(--color-gray);
+  border-radius: 8px;
+}
+
+.input:placeholder {
+  color: var(--color-text);
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.info {
+  font-size: var(--size-s);
+  color: var(--color-text);
+  margin-top: var(--space-n);
+}
+
+.errorMessage {
+  color: var(--color-error);
+}

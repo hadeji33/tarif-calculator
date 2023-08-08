@@ -1,0 +1,11 @@
+.heading {
+  font-size: var(--size-b);
+  font-weight: 700;
+
+  margin-bottom: var(--space-b);
+}
+
+.socials {
+  display: flex;
+  column-gap: var(--space-xm);
+}

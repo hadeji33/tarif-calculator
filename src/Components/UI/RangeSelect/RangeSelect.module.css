@@ -1,0 +1,11 @@
+.input {
+  width: 100%;
+  margin-bottom: var(--space-l);
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--size-l);
+  font-weight: 500;
+}

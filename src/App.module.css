@@ -1,0 +1,10 @@
+.root {
+  background: var(--color-bg);
+  display: flex;
+  justify-content: center;
+  padding: var(--space-xb);
+}
+
+.form {
+  width: 100%;
+}

@@ -1,0 +1,9 @@
+.root {
+  margin-bottom: var(--space-b);
+}
+
+.label {
+  font-weight: 500;
+  font-size: var(--size-xl);
+  margin-bottom: var(--space-xl);
+}

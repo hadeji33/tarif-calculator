@@ -1,13 +1,37 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/** размеры шрифта */
+:root {
+  --size-s: 12px;
+  --size-m: 18px;
+  --size-l: 24px;
+  --size-xl: 32px;
+  --size-b: 64px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/** отступы */
+:root {
+  --space-s: 5px;
+  --space-n: 10px;
+  --space-xm: 15px;
+  --space-m: 20px;
+  --space-l: 30px;
+  --space-xl: 40px;
+  --space-xxl: 50px;
+  --space-b: 90px;
+  --space-xb: 120px;
+}
+
+/** цвета */
+:root {
+  --color-bg: #eef2f4;
+  --color-accent: #7a5cfa;
+  --color-gray: #b8c6cf;
+  --color-white: #ffffff;
+  --color-text: #86969c;
+  --color-black: #000000;
+  --color-error: #eb5757;
+}
+
+
+* {
+  font-family: Inter;
 }

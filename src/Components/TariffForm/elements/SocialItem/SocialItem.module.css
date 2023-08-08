@@ -1,0 +1,14 @@
+.root {
+  padding: var(--space-xm);
+  background: var(--color-white);
+  text-align: center;
+  border-radius: 45px 45px 15px 15px;
+}
+
+.icon {
+  margin-bottom: var(--space-xm);
+}
+
+.hidden {
+  display: none;
+}
