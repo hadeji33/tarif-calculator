@@ -1,5 +1,5 @@
 import {
-  HTMLAttributes,
+  FormHTMLAttributes,
   FC,
   memo,
   useRef,
@@ -25,7 +25,7 @@ function transformFormDataToObject(formData: FormData) {
 }
 
 interface FormProps
-  extends Omit<HTMLAttributes<HTMLFormElement>, "onChange" | "onSubmit"> {
+  extends Omit<FormHTMLAttributes<HTMLFormElement>, "onChange" | "onSubmit"> {
   className?: string;
   onChange?: (e: FormEvent<HTMLFormElement>, data: unknown) => void;
   onSubmit?: (e: FormEvent<HTMLFormElement>, data: unknown) => void;

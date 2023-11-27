@@ -1,59 +1,48 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 
 import style from "./App.module.css";
-import TariffForm from "./Components/TariffForm/TariffForm";
+import TariffForm from "./Components/TariffForm";
+import { useAppDispatch } from "./Store/hooks";
+import {
+  FormInitialState,
+  startLoading,
+  loadingSuccess,
+} from "./Store/formReducer";
 
-const priceConfig: Record<string, Record<string, number>> = {
-  router: {
-    rent: 99,
-    buy: 0,
-  },
-  operator: {
-    1: 40,
-    2: 80,
-    3: 90,
-  },
-  minutes: {
-    200: 20,
-    300: 30,
-    400: 40,
-    500: 50,
-    600: 60,
-  },
-  sms: {
-    0: 20,
-    50: 30,
-    100: 50,
-    150: 70,
-  },
-  internet: {
-    5: 20,
-    10: 30,
-    15: 50,
-    20: 65,
-    25: 70,
-  },
-  facebook: {
-    on: 20,
-  },
-  vk: {
-    on: 20,
-  },
-  ok: {
-    on: 20,
-  },
-  instagram: {
-    on: 20,
-  },
-  tiktok: {
-    on: 20,
-  },
-};
+async function fetchInit() {
+  return new Promise<Partial<FormInitialState["data"]>>((resolve) => {
+    setTimeout(() => {
+      resolve({
+        minutes: 300,
+        sms: 100,
+        internet: 10,
+        wifi: "rent",
+        socials: {
+          ok: true,
+          vk: false,
+          facebook: false,
+          instagram: false,
+          tiktok: false,
+        },
+      });
+    }, 1000);
+  });
+}
 
 const App: FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(startLoading());
+
+    fetchInit().then((data) => {
+      dispatch(loadingSuccess(data));
+    });
+  }, [dispatch]);
+
   return (
     <div className={style.root}>
-      <TariffForm className={style.form} priceConfig={priceConfig} />
+      <TariffForm className={style.form} />
     </div>
   );
 };

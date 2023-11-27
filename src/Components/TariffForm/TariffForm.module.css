@@ -9,3 +9,7 @@
   display: flex;
   column-gap: var(--space-xm);
 }
+
+.input {
+  width: 368px;
+}

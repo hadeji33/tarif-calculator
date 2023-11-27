@@ -1,10 +1,8 @@
-import { HTMLAttributes, FC, memo } from "react";
+import { FC, memo, InputHTMLAttributes } from "react";
 
-interface CheckBoxProps extends HTMLAttributes<HTMLDivElement> {
+interface CheckBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   label?: string;
-  name?: string;
-  checked?: boolean;
 }
 
 const CheckBox: FC<CheckBoxProps> = (props) => {
