@@ -1,29 +1,33 @@
-import { HTMLAttributes, FC, memo } from "react";
+import { InputHTMLAttributes, memo, forwardRef } from "react";
 import cn from "classnames";
 
 import style from "./Input.module.css";
 
-interface InputProps extends HTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
-  name?: string;
+  cnContainer?: string;
   after?: string;
   error?: string;
 }
 
-const Input: FC<InputProps> = (props) => {
+const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   const { className, error, after, ...restProps } = props;
   return (
     <div className={style.root}>
-      <input
-        {...restProps}
-        className={cn(style.input, className, {
-          [style.error]: !!error,
-        })}
-      />
-      {error && <div className={cn(style.info, style.errorMessage)}>{error}</div>}
+      <div className={cn(style.inputContainer, { [style.error]: !!error })}>
+        <input
+          {...restProps}
+          className={cn(style.input, className, {
+            [style.error]: !!error,
+          })}
+        />
+      </div>
+      {error && (
+        <div className={cn(style.info, style.errorMessage)}>{error}</div>
+      )}
       {after && <div className={style.info}>{after}</div>}
     </div>
   );
-};
+});
 
 export default memo(Input);

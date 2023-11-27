@@ -1,9 +1,9 @@
-import { HTMLAttributes, FC, memo, useMemo } from "react";
+import { FC, memo, useMemo, InputHTMLAttributes } from "react";
 import cn from "classnames";
 
 import style from "./RangeSelect.module.css";
 
-interface RangeSelectProps extends HTMLAttributes<HTMLInputElement> {
+interface RangeSelectProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   min?: number;
   max?: number;
@@ -18,7 +18,7 @@ const RangeSelect: FC<RangeSelectProps> = (props) => {
   const steps = useMemo(() => {
     const steps = [];
 
-    for (let i = min; i <= max; i+= step) {
+    for (let i = min; i <= max; i += step) {
       steps.push(i);
     }
 

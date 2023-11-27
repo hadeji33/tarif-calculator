@@ -1,11 +1,4 @@
-import {
-  HTMLAttributes,
-  FC,
-  memo,
-  useCallback,
-  ChangeEvent,
-  useState,
-} from "react";
+import { FC, memo, InputHTMLAttributes } from "react";
 import cn from "classnames";
 
 import facebook from "./icons/facebook.svg";
@@ -19,7 +12,7 @@ import instagramHovered from "./icons/instagram.hovered.svg";
 import tiktok from "./icons/tiktok.svg";
 import tiktokHovered from "./icons/tiktok.hovered.svg";
 
-import CheckBox from "../../../UI/CheckBox/CheckBox";
+import CheckBox from "../../../UI/CheckBox";
 import style from "./SocialItem.module.css";
 
 type Social = "vk" | "ok" | "instagram" | "facebook" | "tiktok";
@@ -32,7 +25,7 @@ const socialConfig: Record<Social, [string, string]> = {
   facebook: [facebook, facebookHovered],
 };
 
-interface SocialItemProps extends HTMLAttributes<HTMLDivElement> {
+interface SocialItemProps extends InputHTMLAttributes<HTMLInputElement> {
   cnContainer?: string;
   className?: string;
   label?: string;
@@ -41,19 +34,10 @@ interface SocialItemProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const SocialItem: FC<SocialItemProps> = (props) => {
-  const { cnContainer, mode, className, ...restProps } = props;
-  const [checked, setChecked] = useState(false);
+  const { cnContainer, mode, className, onChange, checked, ...restProps } =
+    props;
 
   const icon = checked ? socialConfig[mode][1] : socialConfig[mode][0];
-
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const checked = e.target.checked;
-    setChecked(checked);
-  }, []);
-
-  //   const handleClick = useCallback(() => {
-  //     setChecked((prev) => !prev);
-  //   }, []);
 
   return (
     <label
@@ -62,11 +46,7 @@ const SocialItem: FC<SocialItemProps> = (props) => {
       })}
     >
       <img className={style.icon} src={icon} alt={mode} />
-      <CheckBox
-        {...restProps}
-        className={style.hidden}
-        onChange={handleChange}
-      />
+      <CheckBox {...restProps} className={style.hidden} />
     </label>
   );
 };
